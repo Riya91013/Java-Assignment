@@ -54,6 +54,65 @@ class branch extends college{
     }
 }
 
+class student extends branch{
+    public String name;
+    public int roll_Num;
+    public String gender;
+    public int cpi;
+
+    public student(String collegeName , String tierOfClg , String addressOfClg, int ageOfClg, String branchName, String Name, int rollNum, String Gender, int CPI)
+    {
+        super(collegeName,tierOfClg,addressOfClg,ageOfClg,branchName);
+        this.name = Name;
+        this.roll_Num = rollNum;
+        this.gender = Gender;
+        this.cpi = CPI;
+    }
+    
+    public void Introduce_student()
+    {
+        System.out.println("The name of clg is: " + college_name);
+        System.out.println("The Tier of clg is: " + tier_of_clg);
+        System.out.println("The address of clg is: " + address_of_clg);
+        System.out.println("The clg is: " + age_of_clg +" old.");
+        System.out.println("The name of student is: " + this.name);
+        System.out.println("The Roll Number of student is: " + this.roll_Num);
+        System.out.println("The Gender of student is: " + this.gender);
+        System.out.println("The CPI of student is: "+ this.cpi);
+    }
+}
+
+class Eligible extends student{
+    Eligible(String collegeName , String tierOfClg , String addressOfClg, int ageOfClg, String branchName, String Name, int rollNum, String Gender, int CPI)
+    {
+        super(collegeName,tierOfClg,addressOfClg,ageOfClg,branchName, Name, rollNum, Gender, CPI);
+    }
+
+    void IsEligible_For_Scholarship(int CPI)
+    {
+        if(CPI >= 9)
+        {
+            System.out.println("Yes, " + this.name + " You are eligible for regional scholarship");
+        }
+        else
+        {
+            System.out.println("No, " + this.name + " You are not eligible for regional scholarship");
+        }
+    }
+
+    public void Introduce_Student()
+    {
+        System.out.println("The name of clg is: " + college_name);
+        System.out.println("The Tier of clg is: " + tier_of_clg);
+        System.out.println("The address of clg is: " + address_of_clg);
+        System.out.println("The clg is: " + age_of_clg +" old.");
+        System.out.println("The name of student is: " + this.name);
+        System.out.println("The Roll Number of student is: " + this.roll_Num);
+        System.out.println("The Gender of student is: " + this.gender);
+        System.out.println("The CPI of student is: "+ this.cpi);
+    }
+}
+
 abstract class StudentPast{
     abstract void Academic_History();
     abstract void School_records_for_violence();
@@ -73,34 +132,6 @@ class Record_of_Student extends StudentPast
     }
 }
 
-class student extends branch{
-    public String name;
-    public int roll_Num;
-    public String gender;
-    public int cpi;
-
-    public student(String collegeName , String tierOfClg , String addressOfClg, int ageOfClg, String branchName, String Name, int rollNum, String Gender, int CPI)
-    {
-        super(collegeName,tierOfClg,addressOfClg,ageOfClg,branchName);
-        this.name = Name;
-        this.roll_Num = rollNum;
-        this.gender = Gender;
-        this.cpi = CPI;
-    }
-    
-    public void Introduce_Student()
-    {
-        System.out.println("The name of clg is: " + college_name);
-        System.out.println("The Tier of clg is: " + tier_of_clg);
-        System.out.println("The address of clg is: " + address_of_clg);
-        System.out.println("The clg is: " + age_of_clg +" old.");
-        System.out.println("The name of student is: " + this.name);
-        System.out.println("The Roll Number of student is: " + this.roll_Num);
-        System.out.println("The Gender of student is: " + this.gender);
-        System.out.println("The CPI of student is: "+ this.cpi);
-    }
-}
-
 public class runfile{
     public static void main(String[] args) {
 
@@ -108,7 +139,7 @@ public class runfile{
         a1.MsgOfManagement();
         a1.ExpectedOfStudents();
 
-        student s1 = new student("IIT BHU", "Tier 1", "Varanasi", 102, "Mathematics and Computing", "Riya Singh", 21124044, "Female",9);
+        Eligible s1 = new Eligible("IIT BHU", "Tier 1", "Varanasi", 102, "Mathematics and Computing", "Riya Singh", 21124044, "Female",9);
 
         s1.Introduce_Student();
 
@@ -116,6 +147,7 @@ public class runfile{
 
         r1.Academic_History();
         r1.School_records_for_violence();
+        s1.IsEligible_For_Scholarship(9);
 
         System.out.println();
 
@@ -123,13 +155,15 @@ public class runfile{
         a2.MsgOfManagement();
         a2.ExpectedOfStudents();
         
-        student s2 = new student("IIT BOMBAY", "Tier 1", "Bombay", 64, "Aerospace", "Gauri", 1325, "Female", 8);
+        Eligible s2 = new Eligible("IIT BOMBAY", "Tier 1", "Bombay", 64, "Aerospace", "Gauri", 1325, "Female", 8);
 
         s2.Introduce_Student();
+
         Record_of_Student r2 = new Record_of_Student();
 
         r2.Academic_History();;
         r2.School_records_for_violence();
+        s2.IsEligible_For_Scholarship(8);
 
         System.out.println();
 
@@ -137,7 +171,7 @@ public class runfile{
         a3.MsgOfManagement();
         a3.ExpectedOfStudents();
 
-        student s3 = new student("IIT BHU", "Tier-1", "Varanasi", 102, "Mathematics and Computing", "Sristi Jaiswal", 21124049, "Female", 9);
+        Eligible s3 = new Eligible("IIT BHU", "Tier-1", "Varanasi", 102, "Mathematics and Computing", "Sristi Jaiswal", 21124049, "Female", 9);
 
         s3.Introduce_Student();
 
@@ -145,6 +179,7 @@ public class runfile{
 
         r3.Academic_History();
         r3.School_records_for_violence();
+        s3.IsEligible_For_Scholarship(9);
 
         System.out.println();
 
@@ -152,7 +187,7 @@ public class runfile{
         a4.MsgOfManagement();
         a4.ExpectedOfStudents();
 
-        student s4 = new student("Galgotia", "Tier-2", "Gaziabad", 12, "IT", "Priyansh Rastogi", 274675, "Male", 9);
+        Eligible s4 = new Eligible("Galgotia", "Tier-2", "Gaziabad", 12, "IT", "Priyansh Rastogi", 274675, "Male", 9);
 
         s4.Introduce_Student();
 
@@ -160,6 +195,7 @@ public class runfile{
 
         r4.Academic_History();
         r4.School_records_for_violence();
+        s4.IsEligible_For_Scholarship(9);
 
         System.out.println();
 
@@ -167,14 +203,15 @@ public class runfile{
         a5.MsgOfManagement();
         a5.ExpectedOfStudents();
 
-        student s5 = new student("IIT BHU", "Tier-1", "Varanasi", 102, "Matematics and Computing", "Anshikha Gupta", 21124008, "Female", 9);
+       Eligible s5 = new Eligible("IIT BHU", "Tier-1", "Varanasi", 102, "Matematics and Computing", "Anshikha Gupta", 21124008, "Female", 8);
 
         s5.Introduce_Student();
-
+        
         Record_of_Student r5 = new Record_of_Student();
 
         r5.Academic_History();
         r5.School_records_for_violence();
+        s5.IsEligible_For_Scholarship(8);
 
         System.out.println();
     }
